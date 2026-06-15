@@ -13,9 +13,6 @@ function FinalReveal() {
       />
 
       <div className="reveal-overlay">
-
-        
-
         <h2>
         Apna kaam se matlab rakha kar bsdk! 
         </h2>
