@@ -7,7 +7,7 @@ function FinalReveal() {
     <div className="reveal-container">
 
       <img
-        src="/prank.gif"
+        src="/dedicated-fictional/prank.gif"
         alt="Prank"
         className="reveal-image"
       />
