@@ -25,13 +25,13 @@ function FinalReveal() {
 
       <audio
         ref={audioRef}
-        src="/deicated-fictional/public/prank.mp3"
+        src={`${import.meta.env.BASE_URL}prank.mp3`}
       />
 
       {/* IMAGE */}
 
       <img
-        src="/deicated-fictional/public/prank.gif"
+        src={`${import.meta.env.BASE_URL}prank.gif`}
         alt="Prank"
         className="reveal-image"
       />
