@@ -8,6 +8,7 @@ function App() {
   const [desc, setDesc] = useState("Connecting AI nodes...")
   const [loading, setLoading] = useState(false)
   const [progress, setProgress] = useState(0)
+  const [showButton, setShowButton] = useState(false)
   const [finalReveal, setFinalReveal] = useState(false)
 
   useEffect(() => {
@@ -41,9 +42,9 @@ function App() {
 
       }
 
-      await delay(700)
+      await delay(500)
 
-      setFinalReveal(true)
+      setShowButton(true)
 
     }
 
@@ -55,6 +56,12 @@ function App() {
     return new Promise(resolve => setTimeout(resolve, ms))
   }
 
+  function handleReveal(){
+
+    setFinalReveal(true)
+
+  }
+
   return (
 
     <>
@@ -64,16 +71,12 @@ function App() {
 
           <div className="app">
 
-            {/* Glow */}
-
             <div className="bg1"></div>
             <div className="bg2"></div>
 
-            {/* Main Window */}
-
             <div className="window">
 
-              {/* Navbar */}
+              {/* NAVBAR */}
 
               <nav>
 
@@ -100,7 +103,7 @@ function App() {
 
               </nav>
 
-              {/* Main */}
+              {/* MAIN */}
 
               <main>
 
@@ -154,6 +157,21 @@ function App() {
                       </div>
 
                     </div>
+
+                  )
+                }
+
+                {
+                  showButton && (
+
+                    <button
+                      className="reveal-btn"
+                      onClick={handleReveal}
+                    >
+
+                      View Analysis
+
+                    </button>
 
                   )
                 }
