@@ -7,6 +7,8 @@ function FinalReveal() {
 
   useEffect(() => {
 
+  const timer = setTimeout(() => {
+
     if(audioRef.current){
 
       audioRef.current.volume = 1
@@ -15,7 +17,11 @@ function FinalReveal() {
 
     }
 
-  }, [])
+  }, 1200)
+
+  return () => clearTimeout(timer)
+
+}, [])
 
   return (
 
