@@ -10,13 +10,6 @@ permissions:
   pages: write
   id-token: write
 
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
-
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
 jobs:
 
   build:
@@ -25,32 +18,32 @@ jobs:
 
     steps:
 
-      # Checkout Repository
       - name: Checkout
         uses: actions/checkout@v4
 
-      # Setup Node.js
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
-          cache: npm
+          node-version: '22'
 
-      # Install Dependencies
       - name: Install Dependencies
         run: npm install
 
-      # Build Project
-      - name: Build
+      - name: Build Project
         run: npm run build
 
-      # Upload Dist Folder
-      - name: Upload Pages Artifact
+      - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
 
   deploy:
+
+    needs: build
+
+    permissions:
+      pages: write
+      id-token: write
 
     environment:
       name: github-pages
@@ -58,11 +51,8 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    needs: build
-
     steps:
 
-      # Deploy To GitHub Pages
-      - name: Deploy
+      - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
